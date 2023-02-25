@@ -1,12 +1,47 @@
 {
-  "type": "service_account",
-  "project_id": "mychats-8b8b8",
-  "private_key_id": "17f3103aa8b4f08bf490b811d4eec47b33911fd8",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLjbufUa9FFcna\nY8pPU7wvD5Q3B6zdoAr3CSg+ULXfQryJPGwoouQy58k/8vUulPKkT1RPUcRy10rX\n2eOM5VlGON5wYe6g0br0lgPrx/hy6FJUTFo1jMI29DMTQqbVBkEEyl7sKQtXZSz9\n5oQGtKFXgbXB3ASsiy23M1fksNBoX64EG9J0ttQDmICUP4a/AwXMArlDQB6IV2Pe\ne10nkWPGoHyTVz5+6O/+wCZr62wMbk8w+TLDxDX6q9HEDsP+2p8btBeROouMIGrW\nrg8cHpQ+zHrJs1TifXcywOyyTaKi6b3bdl30lq/czzHWQdGD6FrfGoJZDZUzuhzt\n8T1ncawfAgMBAAECggEAZHqBr6rUQF95hQa2YoMchQSFLsboo3vxfbE0/tG7fUpF\no97CKysBR0mYU6tcMRLQVaBdJ0xfEytIJBXH2BCMiXfgAYyuDQ+KYFq+88AB2cLp\nhPgtnXpukk7n+W1wyf3s0W8N/Thjg1ALrgeAi4jVjcsXC+tOGVgYiHLdQ6OuNJ6I\n23KesYqssnGbxMzaD2VtbPeiUWY8sgE5nYrRNHGV063BECON7OVRqO/2RAWbM5fz\n3fjNA5+RsxE63sYpacXg5DVmo0dS6ohx8VrpQT5k4iousz/rWTojO8WopcodxMyu\nSY5t3+jFt2lmn7jZZ+Lzh7ISxyLYkZSt2njAAExRAQKBgQDr+2Fk45Zzku95Kqnw\no3bML8V76DOd4b+vJ/WFIpRVkYyDoOlYf7z15iZeObmgJcBTOBpHOJus7iGpvWYD\ndnsubPfpasvrP8yTESHE6rvXWlblR/JMFYSyrxbW2oFrYuGWTyHVF7+l2YzxtZhq\nfVDCS8ME8cupgNQ5kDhAezELAQKBgQDc0iJnbMUOGNf8JQOwgy1CNoJODnSQ4xEd\nebGSJpMF0S77kC0wz0pP7g3DFY2h/5r6DcO75edazWxuMYR62TaI7qgW7VNwOtQK\n+PM9xY+/cq1Tl+YGQWB53FiOEw/+NCFv1qWAFor0mQqQbFE5J4A4f6wghOBH0H/x\n/R2tZcRXHwKBgBRvKSjeWEnbwGbineKblQ7rWBN5sPaL9NhLAoSr0OJz/xHq3inu\nrcMxUcM5Bmzqt/O82PGv4jMgT8PuBaZpHRORFgqdV9kgJivaAO2XUfq89OdXypBy\nEJKUfMrQEwLkhhpI8eoM62iGJSFNE0ytW0/n1ZRZB8S+xiHR7j0PLdkBAoGAFNtM\nIJSncBNsowYj+RIKvkxDtnerDtxDi5Mo8HLwRAZj96LAgfGyRSZo6loozHpF+wQ9\nzouCdJMegLHwn2HQwtI30iKMVPdZe8fTwavdTenY8SJRuZmHMTtcqd6nDg2CcvvF\nGfoHGd8ynj181ncipzN34IJsZJwO2Z5cpToNd2UCgYEAlz+zrZvyuaK91vQzUVtx\nDYNscFpjHO8z861WJbx/Nu38GSObcSIVWiQiwdxknH4cJ40npd6iGdDWMwMNlxXv\nUFXRSNu+Z6MXixb4fboQKAqHRDIm0Gt1pShg3OEg6+dtByWTCRwMihF1ASXioTX4\nT3U+mRQxGeUwZ6qbaeEDILA=\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-oz16c@mychats-8b8b8.iam.gserviceaccount.com",
-  "client_id": "103453266938215310095",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-oz16c%40mychats-8b8b8.iam.gserviceaccount.com"
+  "project_info": {
+    "project_number": "132477870744",
+    "project_id": "mychats-8b8b8",
+    "storage_bucket": "mychats-8b8b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132477870744:android:ccaa6210a946db7c1566ed",
+        "android_client_info": {
+          "package_name": "com.app.mychats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132477870744-3uq4omm3lhaep44erd67aeovagt4vtq9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.mychats",
+            "certificate_hash": "83cb28a61f24d54563829a6181bcf1a9978e92b1"
+          }
+        },
+        {
+          "client_id": "132477870744-utcnanotq53647bhjojgmjberf5qc1n1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwM-tYXDgX0aZD8wl7PXHm1F3Tq4hBk7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132477870744-utcnanotq53647bhjojgmjberf5qc1n1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

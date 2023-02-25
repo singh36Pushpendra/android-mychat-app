@@ -41,20 +41,33 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Enter Phone Number"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/etName"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/etName"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
-    <Button
-        android:id="@+id/btnGetOTP"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Get OTP"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/etNumber"
         app:layout_constraintStart_toStartOf="@+id/etNumber"
-        app:layout_constraintTop_toBottomOf="@+id/etNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/etNumber" >
+
+        <Button
+            android:id="@+id/btnGetOTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Get OTP"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:id="@+id/progressBarSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
