@@ -1,3 +1,6 @@
 package com.app.mychats.model
 
-data class User(val userId: String, val name: String, val phoneNumber: String)
+data class User(var userId: String = "", var name: String = "", var phoneNumber: String = "", var profilePic: String = "mychat.png", var lastMessage: String = "", var lastMessageTime: String = "")
+{
+
+}

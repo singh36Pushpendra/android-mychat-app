@@ -10,11 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.mychats.R
 import com.app.mychats.util.MyChatUtil
 import com.app.mychats.view.ChatDetailFragment
-import com.app.mychats.view.HomeFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.chats_card_view.view.*
 
-class UsersAdapter(val context: Context, val contactList: MutableList<Contact>) :
+class UsersAdapter(val context: Context, val contactList: MutableList<User>, val isGroupChat: Boolean = false) :
     RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,19 +31,20 @@ class UsersAdapter(val context: Context, val contactList: MutableList<Contact>) 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val contact: Contact = contactList[position]
+        val user: User = contactList[position]
         holder.itemView.setOnClickListener {
             val chatDetailFragment = ChatDetailFragment()
             val bundle = Bundle()
-            bundle.putString("contactId", contact.contactId)
-            bundle.putString("profilePic", contact.profilePic)
-            bundle.putString("contactName", contact.name)
+            bundle.putString("userId", user.userId)
+            bundle.putString("profilePic", user.profilePic)
+            bundle.putString("name", user.name)
+            bundle.putString("isGroupChat", isGroupChat.toString())
             chatDetailFragment.arguments = bundle
             MyChatUtil.replaceFragment(context as AppCompatActivity, chatDetailFragment)
         }
-        Picasso.get().load(contact.profilePic).placeholder(R.drawable.ic_person)
+        Picasso.get().load(user.profilePic).placeholder(R.drawable.ic_person)
             .into(holder.imgViewUser)
-        holder.contactName.text = contact.name
+        holder.contactName.text = user.name
     }
 
     override fun getItemCount(): Int {

@@ -11,6 +11,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="3dp"
         android:layout_marginEnd="7dp"
         android:layout_marginRight="-1dp"
         android:background="@drawable/bg_sender"
@@ -31,20 +32,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/senderTime"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.363"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="3dp"
+            android:inputType="textMultiLine|textLongMessage"
             android:maxWidth="270dp"
             android:minWidth="50dp"
-            android:inputType="textMultiLine|textLongMessage"
+            android:paddingRight="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/senderTime"
 
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="3dp"
-            android:paddingRight="16dp"/>
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.363" />
 
         <TextView
             android:id="@+id/senderTime"

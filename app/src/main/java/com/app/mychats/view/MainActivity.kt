@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerView, SignUpFragment())
+            .add(R.id.fragmentContainerView, SignInFragment())
             .commit()
 
     }

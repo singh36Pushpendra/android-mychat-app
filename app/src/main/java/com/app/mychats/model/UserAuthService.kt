@@ -3,7 +3,6 @@ package com.app.mychats.model
 import android.app.Activity
 import android.content.Context
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential

@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.mychats.R
-import com.app.mychats.model.Contact
+import com.app.mychats.model.User
 import com.app.mychats.model.UsersAdapter
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_chats.view.*
 class OneToOneChatsFragment : Fragment() {
 
     private lateinit var database: FirebaseDatabase
-    private lateinit var contactList: MutableList<Contact>
+    private lateinit var contactList: MutableList<User>
 
     private lateinit var chatRecyclerView: RecyclerView
 
@@ -33,19 +32,20 @@ class OneToOneChatsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_chats, container, false)
         contactList = mutableListOf()
         val usersAdapter = UsersAdapter(requireContext(), contactList)
-        chatRecyclerView = view.chatRecyclerView
+        chatRecyclerView = view.contactRecyclerView
         chatRecyclerView.adapter = usersAdapter
         val linearLayoutManager = LinearLayoutManager(requireContext())
         chatRecyclerView.layoutManager = linearLayoutManager
 
         database = FirebaseDatabase.getInstance()
-        database.reference.child("contacts").addValueEventListener(object : ValueEventListener {
+        database.reference.child("users").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 dataSnapshot.children.forEach { data ->
                     Log.d("existence", data.exists().toString())
-                    val contact = data.getValue(Contact::class.java)
-                    contactList.add(contact!!)
+                    val contact = data.getValue(User::class.java)
+                    if (contact?.phoneNumber != arguments?.getString("phoneNumber").toString())
+                        contactList.add(contact!!)
                 }
                 usersAdapter.notifyDataSetChanged()
             }

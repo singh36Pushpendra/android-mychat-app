@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_sign_up.view.*
 import java.util.concurrent.TimeUnit
 
@@ -30,6 +32,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private lateinit var progressBarSignUp: ProgressBar
     private lateinit var btnGetOTP: Button
 
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,13 +56,17 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             progressBarSignUp.visibility = View.VISIBLE
             btnGetOTP.visibility = View.INVISIBLE
 
-            val user = User(
-                FirebaseAuth.getInstance().currentUser!!.uid,
-                etName.text.toString(), etNumber.text.toString())
+//            val user = User(
+//                FirebaseAuth.getInstance().currentUser!!.uid,
+//                etName.text.toString(), etNumber.text.toString())
+
+            auth = FirebaseAuth.getInstance()
+
+            val phoneNumber = etNumber.text.toString()
             Toast.makeText(context, "It's working", Toast.LENGTH_SHORT).show()
             val verifyOtpFragment = VerifyOtpFragment()
-            val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
-                .setPhoneNumber("+91${user.phoneNumber}")
+            val options = PhoneAuthOptions.newBuilder(auth)
+                .setPhoneNumber("+91${phoneNumber}")
                 .setTimeout(60L, TimeUnit.SECONDS)
                 .setActivity(context as Activity)
                 .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -73,6 +80,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
                         progressBarSignUp.visibility = View.GONE
                         btnGetOTP.visibility = View.VISIBLE
+                        Log.e("verification failed", e.message.toString())
                         Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     }
 
@@ -82,8 +90,8 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                         btnGetOTP.visibility = View.VISIBLE
 
                         val bundle = Bundle()
-                        bundle.putString("name", user.name)
-                        bundle.putString("phoneNumber", user.phoneNumber)
+                        bundle.putString("name", etName.text.toString())
+                        bundle.putString("phoneNumber", phoneNumber)
                         bundle.putString("backendOTP", backendOTP)
                         verifyOtpFragment.arguments = bundle
                         MyChatUtil.replaceFragment(activity, verifyOtpFragment)
@@ -104,6 +112,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 //                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
 //            }
 //        }
+
+        view.btnSignIn.setOnClickListener {
+            MyChatUtil.replaceFragment(activity, SignInFragment())
+        }
         return view
     }
 

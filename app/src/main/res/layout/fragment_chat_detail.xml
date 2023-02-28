@@ -23,8 +23,9 @@
             android:background="@drawable/bg_edit_text"
             android:ems="10"
             android:hint="Message"
-            android:padding="10dp"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="10dp" />
 
         <ImageView
             android:id="@+id/imgViewSend"

@@ -13,6 +13,7 @@ import com.app.mychats.util.MyChatUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
@@ -40,9 +41,9 @@ class ChatDetailFragment : Fragment() {
         val senderId = auth.uid
 
         arguments?.run {
-            receiverId = getString("contactId").toString()
+            receiverId = getString("userId").toString()
             profilePic = getString("profilePic").toString()
-            receiverName = getString("receiverName").toString()
+            receiverName = getString("name").toString()
         }
 
         view.txtName.text = receiverName
@@ -62,9 +63,15 @@ class ChatDetailFragment : Fragment() {
 
         val senderRoom = senderId + receiverId
         val receiverRoom = receiverId + senderId
+        val isGroupChatString = arguments?.getString("isGroupChat").toString()
 
-        database.reference.child("chats")
-            .child(senderRoom)
+        var databaseReference: DatabaseReference
+        if (isGroupChatString == "true")
+            databaseReference = database.reference.child("group_chat")
+        else
+            databaseReference = database.reference.child("chats").child(senderRoom)
+
+        databaseReference
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     messageList.clear()
@@ -86,14 +93,15 @@ class ChatDetailFragment : Fragment() {
             val message = Message(senderId!!, messageText, timestamp)
             view.etMessage.setText("")
 
-            database.reference.child("chats").child(senderRoom).push()
-                .setValue(message).addOnSuccessListener {
+            databaseReference.push().setValue(message).addOnSuccessListener {
+                if (isGroupChatString == "false") {
                     database.reference.child("chats")
                         .child(receiverRoom).push().setValue(message)
                         .addOnSuccessListener {
 
                         }
                 }
+            }
         }
         return view
     }

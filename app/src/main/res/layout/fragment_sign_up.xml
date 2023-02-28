@@ -9,14 +9,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="400dp"
-        tools:src="@drawable/img_chat" />
+        tools:src="@drawable/ic_chat" />
 
     <EditText
         android:id="@+id/etName"
@@ -48,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <FrameLayout
+        android:id="@+id/frameLayoutSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/etNumber"
@@ -70,4 +71,16 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Sign In"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        app:layout_constraintLeft_toLeftOf="@id/frameLayoutSignIn"
+        app:layout_constraintRight_toRightOf="@id/frameLayoutSignIn"
+        app:layout_constraintTop_toBottomOf="@id/frameLayoutSignIn"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

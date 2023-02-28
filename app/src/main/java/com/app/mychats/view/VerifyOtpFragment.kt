@@ -1,6 +1,7 @@
 package com.app.mychats.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,9 +34,9 @@ class VerifyOtpFragment : Fragment() {
     private lateinit var progressBarVerifyOTP: ProgressBar
     private lateinit var btnVerifyOTP: Button
 
+
     private lateinit var userRef: DatabaseReference
     private lateinit var userId: String
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,18 +62,32 @@ class VerifyOtpFragment : Fragment() {
             progressBarVerifyOTP.visibility = View.VISIBLE
             btnVerifyOTP.visibility = View.INVISIBLE
 
-            userRef = FirebaseDatabase.getInstance().getReference("users")
-            userId = userRef.push().key.toString()
-            val user = User(userId, name, phoneNumber)
             val phoneAuthCredential = PhoneAuthProvider.getCredential(getOTPBackend, code)
-            FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+            val auth = FirebaseAuth.getInstance()
+
+            userRef = FirebaseDatabase.getInstance().getReference("users")
+            auth.signInWithCredential(phoneAuthCredential)
                 .addOnCompleteListener {
 
                     progressBarVerifyOTP.visibility = View.GONE
                     btnVerifyOTP.visibility = View.VISIBLE
                     if (it.isSuccessful) {
-                        saveUser(user)
-                        MyChatUtil.replaceFragment(requireActivity(), HomeFragment())
+
+                        userId = auth.currentUser?.uid.toString()
+                        val homeFragment = HomeFragment()
+                        val bundle = Bundle()
+                        bundle.putString("phoneNumber", phoneNumber)
+                        bundle.putString("name", name)
+                        homeFragment.arguments = bundle
+                        val user = User(userId, name, phoneNumber)
+                        Log.d("name value", user.name)
+                        try {
+                            if (user.name != "null")
+                                saveUser(user)
+                        } catch (exception: Exception) {
+                            exception.stackTrace
+                        }
+                        MyChatUtil.replaceFragment(requireActivity(), homeFragment)
                     }
                 }
         }
@@ -89,8 +104,8 @@ class VerifyOtpFragment : Fragment() {
         return view
     }
 
+
     private fun saveUser(user: User) {
         userRef.child(userId).setValue(user)
     }
-
 }
